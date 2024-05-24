@@ -1,0 +1,49 @@
+.image-upload-container {
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  .title {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .subtitle {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  
+  .image-preview {
+    margin: 20px auto;
+    width: 70%;
+  }
+  
+  .preview-image {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+  }
+  
+  .prediction-text {
+    font-size: 16px;
+  }
+  
+  /* .file-input {
+    display: none;
+  } */
+  
+  .upload-button, .additional-button {
+    padding: 10px 20px;
+    margin-top: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .upload-button:hover, .additional-button:hover {
+    background-color: #0056b3;
+  }
+  
