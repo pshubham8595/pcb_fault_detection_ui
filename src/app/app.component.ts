@@ -47,8 +47,8 @@ export class AppComponent {
           let jsonData = JSON.parse(JSON.stringify(response))
           console.log("Resp:" +JSON.stringify(response));
           this.pcbFault = jsonData['pcbFault']
-          if(this.pcbFault == "Potato___healthy"){
-            this.predictionText = "Selected PCB image has fault :\n"+this.pcbFault+" ";
+          if(this.pcbFault == "None"){
+            this.predictionText = "Unknown or unable to parse PCB";
           }
           else{
             this.predictionText = "Selected PCB image has fault :\n"+this.pcbFault+" ";
