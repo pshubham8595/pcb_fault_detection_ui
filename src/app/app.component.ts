@@ -18,7 +18,18 @@ export class AppComponent {
   predictionText: string = ""
   showLoading:boolean = false;
 
-  constructor(public fileUploadService:FileUploadService){}
+  constructor(public fileUploadService:FileUploadService){
+    document.addEventListener('DOMContentLoaded', () => {
+      this.inputElement = document.getElementById('file-upload') as HTMLInputElement;
+      if (this.inputElement) {
+        console.log("Element with id 'file-upload' found");
+
+        this.inputElement.addEventListener('change', this.onImageSelected.bind(this));
+      } else {
+        console.error("Element with id 'file-upload' not found");
+      }
+    });
+  }
   
   onFileSelected(event: any): void {
     const file: File = event.target.files[0];
@@ -35,6 +46,32 @@ export class AppComponent {
       this.imageSelected = false;
     }
   }
+  
+  onImageSelected(event: Event): void {
+    console.log("onImageSelected!");
+
+    const target = event.target as HTMLInputElement;
+    const files = target.files;
+    if (files && files.length > 0) {
+      const file = files[0];
+      console.log("Valid file selected!");
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.imageUrl = reader.result as string;
+        this.imageSelected = true;
+        this.showLoading = false;
+        this.selectedFile = file
+        console.log("Selected file name:"+file.name)
+      };
+      reader.readAsDataURL(file);
+    } else {
+      console.log("No file selected!");
+      this.imageUrl = null;
+      this.imageSelected = false;
+      this.showLoading = false;
+    }
+  }
+
 
   sendFileToServer(){
     console.log("Sending file to servier")
